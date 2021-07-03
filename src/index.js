@@ -7,7 +7,6 @@ const SortMiddleware = require('./app/middlewares/SortMiddleware');
 
 
 const app = express();
-const port = 3000;
 
 const route = require("./routes");
 const db = require("./config/db");
@@ -66,6 +65,9 @@ app.set("views", path.join(__dirname, "resources", "views"));
 // routes init
 route(app);
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+app.listen(port, host, function() {
+  console.log("Server started.......");
 });
